@@ -178,13 +178,6 @@
                     {
                         SAVE_C(make.top.greaterThanOrEqualTo(previewsView.mas_bottom).with.offset(itemVerticalMargin));
                         SAVE_C(make.leading.equalTo(superView.mas_leading).with.offset(leftOffset));
-                        
-                        UILabel *label = [(UIButton*)view titleLabel];
-                        CGFloat height = [label.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - leftOffset - rightOffset - 2*itemMargin, CGFLOAT_MAX)
-                                                                  options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin
-                                                               attributes:@{NSFontAttributeName: label.font}
-                                                                  context:nil].size.height + topPadding + bottomOffset;
-                        SAVE_C(make.height.equalTo(@(height)));
                     }];
                     currentX = leftOffset + size.width;
                 }
@@ -196,16 +189,19 @@
                 {
                     SAVE_C(make.top.equalTo(superView.mas_top).with.offset(topPadding));
                     SAVE_C(make.leading.equalTo(superView.mas_leading).with.offset(leftOffset));
-                    
-                    UILabel *label = [(UIButton*)view titleLabel];
-                    CGFloat height = [label.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - leftOffset - rightOffset - 2*itemMargin, CGFLOAT_MAX)
-                                                              options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin
-                                                           attributes:@{NSFontAttributeName: label.font}
-                                                              context:nil].size.height + topPadding + bottomOffset;
-                    SAVE_C(make.height.equalTo(@(height)));
                 }];
                 currentX += size.width;
             }
+            
+            [view mas_makeConstraints:^(MASConstraintMaker *make)
+            {
+                 UILabel *label = [(UIButton*)view titleLabel];
+                 CGFloat height = [label.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - leftOffset - rightOffset - 2*itemMargin, CGFLOAT_MAX)
+                                                           options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin
+                                                        attributes:@{NSFontAttributeName: label.font}
+                                                           context:nil].size.height + topPadding + bottomOffset;
+                 SAVE_C(make.height.equalTo(@(height)));
+            }];
             
             previewsView = view;
         }
