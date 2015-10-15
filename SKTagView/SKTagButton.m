@@ -22,7 +22,7 @@
 	
 	btn.backgroundColor = tag.bgColor;
 	btn.contentEdgeInsets = tag.padding;
-	btn.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+	btn.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
 	
     if (tag.bgImg)
     {
