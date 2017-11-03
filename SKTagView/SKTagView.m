@@ -187,7 +187,7 @@
                 //first one
                 [view mas_makeConstraints:^(MASConstraintMaker *make)
                 {
-                    SAVE_C(make.top.equalTo(superView.mas_top).with.offset(topPadding));
+                    SAVE_C(make.top.equalTo(superView.mas_top).with.offset(topPadding).with.priority(999));
                     SAVE_C(make.leading.equalTo(superView.mas_leading).with.offset(leftOffset));
                 }];
                 currentX += size.width;
@@ -200,7 +200,7 @@
                                                            options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin
                                                         attributes:@{NSFontAttributeName: label.font}
                                                            context:nil].size.height + topPadding + bottomOffset;
-                 SAVE_C(make.height.equalTo(@(height)));
+                 SAVE_C(make.height.equalTo(@(height)).with.priority(999));
             }];
             
             previewsView = view;
