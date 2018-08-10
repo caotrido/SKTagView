@@ -13,6 +13,8 @@
 @property (nonatomic, strong) UIColor *textColor;
 ///backgound color
 @property (nonatomic, strong) UIColor *bgColor;
+///gradients colors
+@property (nonatomic, strong) NSArray *gradientsColors;
 ///background image
 @property (nonatomic, strong) UIImage *bgImg;
 @property (nonatomic) CGFloat cornerRadius;

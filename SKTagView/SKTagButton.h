@@ -8,5 +8,10 @@
 
 @class SKTag;
 @interface SKTagButton : UIButton
+
+@property (nonatomic, strong) CAGradientLayer *gradientLayer;
+
 + (instancetype)buttonWithTag:(SKTag *)tag;
+- (void)setupGradient:(NSArray *)colors;
+
 @end
